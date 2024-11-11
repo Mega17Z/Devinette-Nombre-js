@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="saisi"> <button id="bout">envoyer</button>
+    <p id="fre"></p>
+    <p id="fro"></p>
+    
+
+    <script>
+        function nombre(min, max){
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+let alea = nombre(10, 100);
+// console.log(alea);
+
+
+let saisi = document.getElementById('saisi');
+let bouton = document.getElementById('bout');
+let essai = 1;
+
+document.getElementById('bout').addEventListener('click', function(){
+    let utilisation = saisi.value;
+    console.log(utilisation);
+    if(essai <= 9){
+        document.querySelector('#fre').innerHTML = 'Esaaye : ' + essai;
+        essai++;
+    }else{
+        document.querySelector('#fre').innerHTML = 'Essaye : ' + essai + '<br> Terminer' ;
+        bouton.disabled = true;
+    }
+
+    if(utilisation < alea){
+        document.getElementById('fro').innerText = 'le nombre est plus grand';
+    }
+    else if(utilisation == alea){
+        document.getElementById('fro').innerText = 'Bravo vous avez devinez le Nombre';
+        bouton.disabled = true;
+    }
+    else if(utilisation > alea){
+        document.getElementById('fro').innerText = 'le nombre est plus petit';
+    }else{
+        document.getElementById('fro').innerText = 'veuillez saisr un nombre entre 10 et 100';
+    }
+
+})
+
+    </script>
+    <!-- <script src="devine.js"></script> -->
+</body>
+</html>
